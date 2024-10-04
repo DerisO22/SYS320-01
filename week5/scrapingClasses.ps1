@@ -28,12 +28,12 @@ function daysTranslator($fullTable){
     for($i=0; $i -lt $fullTable.length; $i++){
         $Days = @()
 
-        if($fullTable[$i].Days -ilike "M")       { $Days += "Monday" }
+        if($fullTable[$i].Days -ilike "M*")       { $Days += "Monday" }
         if($fullTable[$i].Days -ilike "*T[TWF]*"){ $Days += "Tuesday" }
         if($fullTable[$i].Days -ilike "T")       { $Days += "Tuesday" }
-        if($fullTable[$i].Days -ilike "W")       { $Days += "Wednesday" }
-        if($fullTable[$i].Days -ilike "TH")      { $Days += "Thursday" }
-        if($fullTable[$i].Days -ilike "F")       { $Days += "Friday" }
+        if($fullTable[$i].Days -ilike "*W*")       { $Days += "Wednesday" }
+        if($fullTable[$i].Days -ilike "*TH*")      { $Days += "Thursday" }
+        if($fullTable[$i].Days -ilike "*F*")       { $Days += "Friday" }
 
         $fullTable[$i].Days = $Days
     }
