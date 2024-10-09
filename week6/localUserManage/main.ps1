@@ -1,42 +1,6 @@
 . (Join-Path $PSScriptRoot Users.ps1)
 . (Join-Path $PSScriptRoot Event-Logs.ps1)
 
-<# **********************
-    #  Check User
-    *********************** #>
-    function checkUser($name){
-        $users = Get-LocalUser | Where-Object { $_.name -ilike $name }
-        if($users.Count -lt 1){ return $false }
-        else{ return $true }
-    }
-
-    <# **********************
-    #  Check Password
-    *********************** #>
-    function checkPassword($password){
-        Write-Host $password
-        if($password.Length -lt 6){
-            Write-Host "Failed Length Test" | Out-String
-            return $false
-        } 
-        elseif($password -notmatch "\d"){
-            Write-Host "Failed Digit Test" | Out-String
-            return $false
-        } 
-        elseif($password -notmatch "[\W_]"){
-            Write-Host "Failed Special C Test" | Out-String
-            return $false
-        }
-        elseif($password -notmatch "[a-zA-Z]"){
-            Write-Host "Failed Letter Test" | Out-String
-            return $false
-        }
-        else {
-            Write-Host "Here"
-            return $true
-        }
-    }
-
 clear
 
 $Prompt  = "Please choose your operation:`n"

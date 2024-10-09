@@ -5,6 +5,33 @@
 ************************************************************* 
 #>
 
+<# **********************
+#  Check Password
+*********************** #>
+function checkPassword($password){
+    Write-Host $password
+    if($password.Length -lt 6){
+        Write-Host "Failed Length Test" | Out-String
+        return $false
+    } 
+    elseif($password -notmatch "\d"){
+        Write-Host "Failed Digit Test" | Out-String
+        return $false
+    } 
+    elseif($password -notmatch "[\W_]"){
+        Write-Host "Failed Special C Test" | Out-String
+        return $false
+    }
+    elseif($password -notmatch "[a-zA-Z]"){
+        Write-Host "Failed Letter Test" | Out-String
+        return $false
+    }
+    else {
+        Write-Host "Here"
+        return $true
+    }
+}
+
 
 <# ******************************************************
    Functions: Get Matching Lines
