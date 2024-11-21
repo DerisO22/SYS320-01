@@ -42,7 +42,7 @@ function coursesLocation(){
 	read locationInput
 
 	echo ""
-	echo "All Courses $locationIput in Given Location:"
+	echo "All Courses $locationInput in Given Location:"
 	cat "$courseFile" | grep "$locationInput" | cut -d";" -f1,2,5,6,7 | \
 	sed 's/;/ | /g'
 	echo ""
